@@ -242,6 +242,12 @@ function openModal(id) {
     updateReactionsUI();
     renderReviews();
     
+    // Reset Tabs
+    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('.article-tab').forEach(tab => tab.classList.remove('active'));
+    document.querySelector('.tab-btn[data-target="tab-summary"]').classList.add('active');
+    document.getElementById('tab-summary').classList.add('active');
+
     modal.classList.add('active');
     const modalContent = modal.querySelector('.modal-content');
     modalContent.scrollTop = 0; // Reset modal scroll
@@ -260,6 +266,18 @@ function closeModal() {
 closeModalBtn.addEventListener('click', closeModal);
 modal.addEventListener('click', (e) => {
     if (e.target === modal) closeModal();
+});
+
+// Tab Switching Logic
+document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.article-tab').forEach(t => t.classList.remove('active'));
+        
+        btn.classList.add('active');
+        const targetId = btn.getAttribute('data-target');
+        document.getElementById(targetId).classList.add('active');
+    });
 });
 
 // Lógica de Reacciones
