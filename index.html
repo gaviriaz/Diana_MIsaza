@@ -34,7 +34,13 @@
                 <p>Bienvenido a mi blog académico interactivo. Explora cómo la interoperabilidad, el Blockchain y la IA están redefiniendo el futuro del ecosistema de salud.</p>
                 <div class="hero-stats">
                     <div class="stat"><span class="stat-num">4</span><span class="stat-label">Artículos Analizados</span></div>
-                    <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Interactivo</span></div>
+                    <div class="stat"><span class="stat-num" id="global-progress">0%</span><span class="stat-label">Maestría Completada</span></div>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-track">
+                        <div class="progress-bar" id="mastery-progress" style="width: 0%"></div>
+                    </div>
+                    <span class="progress-text">Tu progreso académico</span>
                 </div>
             </div>
             <div class="hero-image-wrapper fade-in-up" style="animation-delay: 0.2s;">
@@ -58,7 +64,8 @@
 
     <!-- Article Modal -->
     <div id="article-modal" class="modal">
-        <div class="modal-content">
+        <div class="modal-progress-bar" id="modal-progress-bar"></div>
+        <div class="modal-content" id="modal-scroll-content">
             <button class="close-modal" id="close-modal"><i data-lucide="x"></i></button>
             
             <div class="modal-header-wrapper">
@@ -72,34 +79,70 @@
             </div>
 
             <div class="modal-body">
-                <div class="modal-text" id="modal-summary">
-                    <!-- Summary content -->
-                </div>
-                
-                <div class="interactive-section">
-                    <h3>Interacción de la Clase</h3>
-                    
-                    <div class="reactions-container">
-                        <button class="reaction-btn" data-type="insightful">
-                            <i data-lucide="lightbulb"></i> Interesante <span class="count" id="count-insightful">0</span>
-                        </button>
-                        <button class="reaction-btn" data-type="innovative">
-                            <i data-lucide="rocket"></i> Innovador <span class="count" id="count-innovative">0</span>
-                        </button>
-                        <button class="reaction-btn" data-type="complex">
-                            <i data-lucide="brain-circuit"></i> Complejo <span class="count" id="count-complex">0</span>
-                        </button>
-                    </div>
+                <div class="article-layout">
+                    <!-- Navigation Tabs -->
+                    <aside class="article-sidebar">
+                        <ul class="article-tabs" id="article-tabs">
+                            <li class="tab-btn active" data-target="tab-summary">
+                                <span class="tab-num">01</span>
+                                <span class="tab-label">Análisis General</span>
+                            </li>
+                            <li class="tab-btn" data-target="tab-challenge">
+                                <span class="tab-num">02</span>
+                                <span class="tab-label">Reto Académico</span>
+                            </li>
+                            <li class="tab-btn" data-target="tab-discussion">
+                                <span class="tab-num">03</span>
+                                <span class="tab-label">Debate y Aportes</span>
+                            </li>
+                        </ul>
+                    </aside>
 
-                    <div class="reviews-section">
-                        <h4>Comentarios y Reseñas</h4>
-                        <form id="review-form" class="review-form">
-                            <input type="text" id="reviewer-name" placeholder="Tu nombre" required>
-                            <textarea id="review-text" placeholder="¿Qué opinas sobre este artículo?" rows="3" required></textarea>
-                            <button type="submit" class="submit-btn">Publicar Reseña</button>
-                        </form>
-                        <div class="reviews-list" id="reviews-list">
-                            <!-- Reviews injected here -->
+                    <!-- Content Area -->
+                    <div class="article-content-area">
+                        <!-- Tab 1: Summary -->
+                        <div class="article-tab active" id="tab-summary">
+                            <div class="modal-text" id="modal-summary">
+                                <!-- Summary content -->
+                            </div>
+                        </div>
+                        
+                        <!-- Tab 2: Challenge -->
+                        <div class="article-tab" id="tab-challenge">
+                            <div class="challenge-section" id="modal-challenge">
+                                <!-- Challenge injected here -->
+                            </div>
+                        </div>
+
+                        <!-- Tab 3: Discussion -->
+                        <div class="article-tab" id="tab-discussion">
+                            <div class="interactive-section">
+                                <h3>Interacción de la Clase</h3>
+                                
+                                <div class="reactions-container">
+                                    <button class="reaction-btn" data-type="insightful">
+                                        <i data-lucide="lightbulb"></i> Interesante <span class="count" id="count-insightful">0</span>
+                                    </button>
+                                    <button class="reaction-btn" data-type="innovative">
+                                        <i data-lucide="rocket"></i> Innovador <span class="count" id="count-innovative">0</span>
+                                    </button>
+                                    <button class="reaction-btn" data-type="complex">
+                                        <i data-lucide="brain-circuit"></i> Complejo <span class="count" id="count-complex">0</span>
+                                    </button>
+                                </div>
+
+                                <div class="reviews-section">
+                                    <h4>Comentarios y Reseñas</h4>
+                                    <form id="review-form" class="review-form">
+                                        <input type="text" id="reviewer-name" placeholder="Tu nombre" required>
+                                        <textarea id="review-text" placeholder="¿Qué opinas sobre este artículo?" rows="3" required></textarea>
+                                        <button type="submit" class="submit-btn">Publicar Reseña</button>
+                                    </form>
+                                    <div class="reviews-list" id="reviews-list">
+                                        <!-- Reviews injected here -->
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
