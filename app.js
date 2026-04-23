@@ -2,7 +2,7 @@
 const articles = [
     {
         id: 1,
-        title: "Blockchain for smart healthcare: A systematic review of security, interoperability, and AI-IoT integration",
+        title: "Blockchain para la salud inteligente: Una revisión sistemática de seguridad, interoperabilidad e integración de IA-IoT",
         url: "https://journals.sagepub.com/doi/10.1177/20552076261420985",
         tag: "Revisión Sistemática",
         summary: `
@@ -17,7 +17,7 @@ const articles = [
     },
     {
         id: 2,
-        title: "A systematic review on the impact of healthcare consolidation in the digital era",
+        title: "Una revisión sistemática sobre el impacto de la consolidación de la atención médica en la era digital",
         url: "https://doi.org/10.1016/j.hlpt.2025.101138",
         tag: "Revisión Sistemática",
         summary: `
@@ -32,7 +32,7 @@ const articles = [
     },
     {
         id: 3,
-        title: "The role of HL7 FHIR in chronic disease management: A scoping review",
+        title: "El papel de HL7 FHIR en el manejo de enfermedades crónicas: Una revisión panorámica",
         url: "https://doi.org/10.1016/j.ijmedinf.2024.105507",
         tag: "Scoping Review",
         summary: `
@@ -47,7 +47,7 @@ const articles = [
     },
     {
         id: 4,
-        title: "Interoperability in Healthcare: Benefits, Challenges and Resolutions",
+        title: "Interoperabilidad en la atención médica: Beneficios, desafíos y resoluciones",
         url: "https://www.researchgate.net/publication/282322922",
         tag: "Artículo Científico",
         summary: `
