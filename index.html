@@ -1,161 +1,277 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Blog - Diana Marín Isaza</title>
-    <meta name="description" content="Blog académico interactivo explorando la interoperabilidad, blockchain y seguridad en la salud digital.">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-    <!-- Icons (Lucide) -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <!-- Styles -->
+    <title>Salud Digital - Diana Marín Isaza</title>
+    <!-- We removed Tailwind to use our custom CSS system -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@300,0..1&display=swap"
+        rel="stylesheet" />
+    <link rel="icon" href="data:," />
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    <!-- Navigation -->
+    <!-- Navbar -->
     <nav class="navbar">
-        <div class="nav-content">
-            <div class="logo">Diana<span>Marín</span></div>
-            <ul class="nav-links">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#articulos">Artículos</a></li>
-            </ul>
+        <div class="container navbar-content">
+            <div class="navbar-brand">Salud Digital</div>
+            <div class="navbar-links hidden-mobile">
+                <a href="#inicio" class="navbar-link active">Inicio</a>
+                <a href="#articulos" class="navbar-link">Artículos</a>
+                <a href="#metodologia" class="navbar-link">Metodología</a>
+            </div>
+            <div class="navbar-actions">
+                <button aria-label="Perfil" id="openProfileBtn" class="btn-close"
+                    style="background: none; border: none; cursor: pointer; transition: transform 0.2s;">
+                    <span class="material-symbols-outlined"
+                        style="font-size: 28px; color: var(--primary);">account_circle</span>
+                </button>
+            </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <header id="inicio" class="hero">
+    <header class="hero" id="inicio">
         <div class="hero-content">
-            <div class="hero-text fade-in-up">
-                <h1>Transformando la <span>Salud Digital</span></h1>
-                <p>Bienvenido a mi blog académico interactivo. Explora cómo la interoperabilidad, el Blockchain y la IA están redefiniendo el futuro del ecosistema de salud.</p>
-                <div class="hero-stats">
-                    <div class="stat"><span class="stat-num">4</span><span class="stat-label">Artículos Analizados</span></div>
-                    <div class="stat"><span class="stat-num" id="global-progress">0%</span><span class="stat-label">Maestría Completada</span></div>
-                </div>
-                <div class="progress-container">
-                    <div class="progress-track">
-                        <div class="progress-bar" id="mastery-progress" style="width: 0%"></div>
-                    </div>
-                    <span class="progress-text">Tu progreso académico</span>
-                </div>
-            </div>
-            <div class="hero-image-wrapper fade-in-up" style="animation-delay: 0.2s;">
-                <div class="glow-ring"></div>
-                <img src="assets/profile.png" alt="Diana Marín Isaza" class="hero-image">
-                <div class="badge">Estudiante: Diana Marín Isaza</div>
-            </div>
+            <span class="hero-subtitle">Diana Marín Isaza</span>
+            <h1 class="hero-title">
+                Transformando la<br><span class="italic-accent">Salud Digital</span>
+            </h1>
+            <p class="hero-description">
+                Bienvenido a mi blog académico interactivo. Explora cómo la interoperabilidad, el Blockchain y la IA
+                están redefiniendo el futuro del ecosistema de salud.
+            </p>
         </div>
     </header>
 
-    <!-- Articles Section -->
-    <main id="articulos" class="articles-section">
-        <div class="section-header fade-in-up">
-            <h2>Análisis de Artículos</h2>
-            <p>Selecciona un artículo para leer su resumen, dejar tu reseña y compartir tu reacción con la clase.</p>
-        </div>
-        <div class="articles-grid" id="articles-grid">
-            <!-- Articles will be injected here by app.js -->
-        </div>
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Stats Bento Grid -->
+        <section class="stats-grid" id="statsSection">
+            <div class="stat-card">
+                <span class="material-symbols-outlined stat-icon"
+                    style="font-variation-settings: 'FILL' 1;">article</span>
+                <h3 class="stat-value" id="statsArticles">4</h3>
+                <p class="stat-label">Artículos Analizados</p>
+            </div>
+            <div class="stat-card">
+                <span class="material-symbols-outlined stat-icon"
+                    style="font-variation-settings: 'FILL' 1;">school</span>
+                <h3 class="stat-value" id="statsMastery">0%</h3>
+                <p class="stat-label">Maestría Completada</p>
+            </div>
+            <div class="stat-card primary">
+                <span class="material-symbols-outlined stat-icon"
+                    style="font-variation-settings: 'FILL' 1; color: white;">trending_up</span>
+                <h3 class="stat-value" style="font-size: 1.5rem; margin-bottom: 8px;">Progreso Académico</h3>
+                <p class="stat-label" style="color: rgba(255,255,255,0.8); text-transform: none; font-weight: 500;">
+                    Sigue explorando para avanzar</p>
+                <div class="progress-container">
+                    <div class="progress-bar" id="masteryProgressBar"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Articles Grid -->
+        <section id="articulos" style="margin-bottom: var(--space-xl);">
+            <div class="section-header">
+                <h2>Análisis de Artículos</h2>
+                <p>Selecciona un artículo para leer su resumen, dejar tu reseña y completar los retos de aprendizaje.
+                </p>
+            </div>
+
+            <div class="article-grid" id="articleList">
+                <!-- Artículos inyectados por JS -->
+            </div>
+        </section>
+
+        <!-- Methodology Section -->
+        <section id="metodologia" style="margin-bottom: var(--space-xl);">
+            <div class="section-header">
+                <h2>Metodología de Análisis</h2>
+                <p>Cómo estructuro y evalúo la literatura científica en salud digital.</p>
+            </div>
+            <div class="bento-grid" style="grid-template-columns: repeat(3, 1fr); gap: var(--space-md);">
+                <div class="bento-card"
+                    style="grid-column: span 1; display: flex; flex-direction: column; align-items: center; text-align: center;">
+                    <span class="material-symbols-outlined"
+                        style="font-size: 48px; color: var(--secondary); margin-bottom: 16px;">search</span>
+                    <h4>Revisión Sistemática</h4>
+                    <p style="font-size: 0.875rem;">Búsqueda exhaustiva en bases de datos (PubMed, Scopus) utilizando
+                        directrices PRISMA para asegurar rigor y reproducibilidad.</p>
+                </div>
+                <div class="bento-card"
+                    style="grid-column: span 1; display: flex; flex-direction: column; align-items: center; text-align: center;">
+                    <span class="material-symbols-outlined"
+                        style="font-size: 48px; color: var(--secondary); margin-bottom: 16px;">analytics</span>
+                    <h4>Análisis Crítico</h4>
+                    <p style="font-size: 0.875rem;">Evaluación de sesgos, relevancia clínica y viabilidad técnica de las
+                        soluciones propuestas en entornos hospitalarios reales.</p>
+                </div>
+                <div class="bento-card"
+                    style="grid-column: span 1; display: flex; flex-direction: column; align-items: center; text-align: center;">
+                    <span class="material-symbols-outlined"
+                        style="font-size: 48px; color: var(--secondary); margin-bottom: 16px;">model_training</span>
+                    <h4>Aplicación Práctica</h4>
+                    <p style="font-size: 0.875rem;">Diseño de escenarios interactivos (retos) para conectar la teoría
+                        académica con la toma de decisiones clínicas y administrativas.</p>
+                </div>
+            </div>
+        </section>
+
+
     </main>
 
-    <!-- Article Modal -->
-    <div id="article-modal" class="modal">
-        <div class="modal-progress-bar" id="modal-progress-bar"></div>
-        <div class="modal-content" id="modal-scroll-content">
-            <button class="close-modal" id="close-modal"><i data-lucide="x"></i></button>
-            
-            <div class="modal-header-wrapper">
-                <div class="modal-header">
-                    <div class="tag" id="modal-tag">Research</div>
-                    <h2 id="modal-title">Article Title</h2>
-                    <a href="#" id="modal-url" target="_blank" class="ref-link" rel="noopener noreferrer">
-                        Ver artículo original <i data-lucide="external-link"></i>
-                    </a>
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div class="footer-text">
+                © 2026 Diana Marín Isaza. Salud Digital.
+            </div>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Privacidad</a>
+                <a href="#" class="footer-link">Términos</a>
+                <a href="#" class="footer-link">Contacto</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal for Article Analysis -->
+    <div class="modal-overlay" id="articleModal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <div class="modal-title-area">
+                    <span class="article-tag" id="modalTag">Categoría</span>
+                    <h2 id="modalTitle">Título del Artículo</h2>
                 </div>
+                <button class="btn-close" id="closeModalBtn" aria-label="Cerrar modal">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
             </div>
 
             <div class="modal-body">
-                <div class="article-layout">
-                    <!-- Navigation Tabs -->
-                    <aside class="article-sidebar">
-                        <ul class="article-tabs" id="article-tabs">
-                            <li class="tab-btn active" data-target="tab-summary">
-                                <span class="tab-num">01</span>
-                                <span class="tab-label">Análisis General</span>
-                            </li>
-                            <li class="tab-btn" data-target="tab-challenge">
-                                <span class="tab-num">02</span>
-                                <span class="tab-label">Reto Académico</span>
-                            </li>
-                            <li class="tab-btn" data-target="tab-discussion">
-                                <span class="tab-num">03</span>
-                                <span class="tab-label">Debate y Aportes</span>
-                            </li>
-                        </ul>
-                    </aside>
+                <!-- Sidebar Navigation -->
+                <aside class="modal-sidebar">
+                    <nav class="tab-nav" id="modalTabs">
+                        <button class="tab-btn active" data-tab="resumen">
+                            <span class="material-symbols-outlined">subject</span> Resumen
+                        </button>
+                        <button class="tab-btn" data-tab="analisis">
+                            <span class="material-symbols-outlined">analytics</span> Análisis Crítico
+                        </button>
+                        <button class="tab-btn" data-tab="reto">
+                            <span class="material-symbols-outlined">extension</span> Reto Interactivo
+                        </button>
+                        <button class="tab-btn" data-tab="comentarios">
+                            <span class="material-symbols-outlined">forum</span> Mi Reseña
+                        </button>
+                    </nav>
+                </aside>
 
-                    <!-- Content Area -->
-                    <div class="article-content-area">
-                        <!-- Tab 1: Summary -->
-                        <div class="article-tab active" id="tab-summary">
-                            <div class="modal-text" id="modal-summary">
-                                <!-- Summary content -->
-                            </div>
-                        </div>
-                        
-                        <!-- Tab 2: Challenge -->
-                        <div class="article-tab" id="tab-challenge">
-                            <div class="challenge-section" id="modal-challenge">
-                                <!-- Challenge injected here -->
-                            </div>
-                        </div>
-
-                        <!-- Tab 3: Discussion -->
-                        <div class="article-tab" id="tab-discussion">
-                            <div class="interactive-section">
-                                <h3>Interacción de la Clase</h3>
-                                
-                                <div class="reactions-container">
-                                    <button class="reaction-btn" data-type="insightful">
-                                        <i data-lucide="lightbulb"></i> Interesante <span class="count" id="count-insightful">0</span>
-                                    </button>
-                                    <button class="reaction-btn" data-type="innovative">
-                                        <i data-lucide="rocket"></i> Innovador <span class="count" id="count-innovative">0</span>
-                                    </button>
-                                    <button class="reaction-btn" data-type="complex">
-                                        <i data-lucide="brain-circuit"></i> Complejo <span class="count" id="count-complex">0</span>
-                                    </button>
-                                </div>
-
-                                <div class="reviews-section">
-                                    <h4>Comentarios y Reseñas</h4>
-                                    <form id="review-form" class="review-form">
-                                        <input type="text" id="reviewer-name" placeholder="Tu nombre" required>
-                                        <textarea id="review-text" placeholder="¿Qué opinas sobre este artículo?" rows="3" required></textarea>
-                                        <button type="submit" class="submit-btn">Publicar Reseña</button>
-                                    </form>
-                                    <div class="reviews-list" id="reviews-list">
-                                        <!-- Reviews injected here -->
-                                    </div>
-                                </div>
+                <!-- Content Area -->
+                <main class="modal-content-area">
+                    <!-- Tab: Resumen -->
+                    <div class="tab-pane active" id="pane-resumen">
+                        <div class="bento-grid">
+                            <div class="bento-card bento-full">
+                                <h4><span class="material-symbols-outlined">auto_stories</span> Resumen Ejecutivo</h4>
+                                <div id="content-resumen"></div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Tab: Análisis -->
+                    <div class="tab-pane" id="pane-analisis">
+                        <div class="bento-grid">
+                            <div class="bento-card bento-full">
+                                <h4><span class="material-symbols-outlined">insights</span> Puntos Clave</h4>
+                                <div id="content-analisis"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab: Reto -->
+                    <div class="tab-pane" id="pane-reto">
+                        <div class="bento-card bento-full">
+                            <h4><span class="material-symbols-outlined">psychology</span> Evalúa tu comprensión</h4>
+                            <p style="color: var(--on-surface-variant); margin-bottom: var(--space-md);">Completa este
+                                ejercicio práctico para demostrar tu dominio sobre el tema y aumentar tu porcentaje de
+                                maestría.</p>
+                            <div id="content-reto"></div>
+                        </div>
+                    </div>
+
+                    <!-- Tab: Comentarios/Reseña -->
+                    <div class="tab-pane" id="pane-comentarios">
+                        <div class="bento-card bento-full">
+                            <h4><span class="material-symbols-outlined">edit_note</span> Tu Perspectiva</h4>
+                            <p>Escribe una reseña crítica sobre este artículo. Tus notas se guardarán localmente.</p>
+                            <textarea id="reviewTextarea" class="form-input" rows="5"
+                                placeholder="Escribe tu análisis aquí..."></textarea>
+                            <div style="margin-top: var(--space-md); text-align: right;">
+                                <button id="saveReviewBtn" class="btn-primary">Guardar Reseña</button>
+                            </div>
+                            <div id="reviewFeedback" class="feedback-area success" style="display: none;">
+                                Reseña guardada exitosamente.
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Modal -->
+    <div class="modal-overlay" id="profileModal">
+        <div class="modal-container" style="max-width: 500px; height: auto;">
+            <div class="modal-header">
+                <div class="modal-title-area">
+                    <h2 style="font-size: 1.5rem; color: var(--primary);">Tu Perfil Académico</h2>
+                </div>
+                <button class="btn-close" id="closeProfileBtn" aria-label="Cerrar modal">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <div class="modal-body" style="display: block; padding: var(--space-lg);">
+                <div style="text-align: center; margin-bottom: var(--space-md);">
+                    <img src="assets/profile.png" alt="Diana Marín Isaza"
+                        style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid var(--primary-container); margin: 0 auto; display: block; box-shadow: var(--shadow-md);">
+                    <h3 style="margin-top: 16px; font-family: var(--font-h1); color: var(--on-surface);">Diana Marín
+                        Isaza</h3>
+                    <p style="color: var(--primary); font-weight: 600; margin-bottom: 8px;">Estudiante</p>
+                    <p
+                        style="color: var(--on-surface-variant); font-size: 0.95rem; line-height: 1.5; margin-bottom: 16px;">
+                        Soy estudiante de Gerencia de Sistemas de Información en Salud. En este espacio comparto
+                        información, experiencias y reflexiones sobre cómo la telemedicina y las herramientas digitales
+                        pueden transformar la atención en salud, acercar los servicios médicos a las personas y
+                        contribuir a mejorar su calidad de vida. </p>
+                    <p
+                        style="color: var(--on-surface-variant); font-weight: 500; background: var(--surface-container); padding: 8px; border-radius: 8px; display: inline-block;">
+                        Progreso de Lectura General: <span id="profileMastery"
+                            style="color: var(--primary); font-weight: 700;">0%</span></p>
+                </div>
+
+                <div class="bento-card" style="margin-top: var(--space-md);">
+                    <h4 style="margin-bottom: var(--space-sm);"><span class="material-symbols-outlined"
+                            style="font-size: 20px;">history_edu</span> Retos Completados</h4>
+                    <ul id="completedChallengesList"
+                        style="list-style: none; padding: 0; margin: 0; font-size: 0.875rem; color: var(--on-surface-variant);">
+                        <!-- Inyectado por JS -->
+                    </ul>
+                </div>
+
+                <div style="margin-top: var(--space-lg); text-align: center;">
+                    <button class="btn-secondary" id="resetProgressBtn"
+                        style="color: var(--error); border-color: var(--error);">Reiniciar Progreso</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 Mi Blog - Diana Marín Isaza. Todos los derechos reservados.</p>
-        <p class="sub-footer">Desarrollado para el análisis de artículos académicos.</p>
-    </footer>
-
+    <!-- Application Logic -->
     <script src="app.js"></script>
 </body>
+
 </html>

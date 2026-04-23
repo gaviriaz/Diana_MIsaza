@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salud Digital - Artículo Completo</title>
+    <!-- Usamos nuestros estilos personalizados con la nueva paleta de colores -->
+    <link rel="stylesheet" href="styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet">
+</head>
+
+<body style="background: var(--background);">
+
+    <!-- Top Navigation -->
+    <nav class="navbar"
+        style="position: sticky; top: 0; z-index: 1000; background: rgba(255,255,255,0.9); backdrop-filter: blur(10px); border-bottom: 1px solid var(--surface-variant);">
+        <div class="container navbar-content"
+            style="display: flex; justify-content: space-between; align-items: center; padding: 1rem 0;">
+            <a href="index.html" class="brand"
+                style="font-family: var(--font-h1); font-weight: 800; font-size: 1.5rem; color: var(--primary); text-decoration: none;">Salud
+                Digital</a>
+        </div>
+    </nav>
+
+    <main class="w-full pb-xl">
+        <!-- Hero Header -->
+        <header class="reader-hero" id="readerHero" style="background-color: var(--primary);">
+            <div class="hero-overlay"></div>
+            <div class="hero-content container">
+                <button id="backToHomeBtn" class="btn-secondary" onclick="window.close()"
+                    style="margin-bottom: var(--space-md); display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.2); backdrop-filter: blur(8px); border-color: rgba(255,255,255,0.3); color: white;">
+                    <span class="material-symbols-outlined">close</span> Cerrar Pestaña
+                </button>
+                <div class="hero-meta-row">
+                    <div class="hero-meta-item">
+                        <div class="hero-avatar">
+                            <span class="material-symbols-outlined">person</span>
+                        </div>
+                        <div>
+                            <p class="hero-meta-label">D. Marín Isaza</p>
+                            <p class="hero-meta-value">Estudiante</p>
+                        </div>
+                    </div>
+                    <div class="hero-meta-divider"></div>
+                    <div class="hero-meta-item">
+                        <div>
+                            <p class="hero-meta-label">Fecha de Publicación</p>
+                            <p class="hero-meta-value" id="readerDate"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-tags">
+                    <span class="hero-tag" id="readerTag"></span>
+                </div>
+                <h1 class="hero-title" id="readerTitle">Cargando artículo...</h1>
+            </div>
+        </header>
+
+        <!-- Content Area -->
+        <div class="reader-container container">
+            <!-- Sidebar -->
+            <aside class="reader-sidebar">
+                <!-- Abstract Section -->
+                <!-- Abstract Section -->
+                <details class="bento-card sidebar-card abstract-card sidebar-block" open>
+                    <summary class="sidebar-card-title" style="margin-bottom: 0;">
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span class="material-symbols-outlined text-primary">summarize</span>
+                            Resumen Ejecutivo
+                        </div>
+                        <span class="material-symbols-outlined expand-icon">expand_more</span>
+                    </summary>
+                    <p class="sidebar-card-text" id="readerExcerpt" style="margin-top: 16px;"></p>
+                </details>
+
+                <!-- Detalles -->
+                <details class="bento-card sidebar-card details-card sidebar-block" open>
+                    <summary class="details-title" style="margin-bottom: 0; font-family: var(--font-h1); font-weight: 700; font-size: 1.1rem; color: var(--on-surface);">
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span class="material-symbols-outlined text-primary">info</span>
+                            Detalles del Artículo
+                        </div>
+                        <span class="material-symbols-outlined expand-icon">expand_more</span>
+                    </summary>
+                    <div style="margin-top: 16px;">
+                        <div class="details-section">
+                            <p class="details-label">DOI</p>
+                            <p class="details-value" id="readerDoi"></p>
+                        </div>
+                        <hr class="details-divider">
+                        <div class="details-section">
+                            <p class="details-label">Tags</p>
+                            <div class="details-tags" id="readerTagsContainer"></div>
+                        </div>
+                        <hr class="details-divider">
+                        <div class="details-actions">
+                            <a href="#" id="readerPdfBtn" download class="btn-primary"
+                                style="margin-bottom: 12px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%;">
+                                <span class="material-symbols-outlined">download</span> Descargar PDF
+                            </a>
+                            <a href="#" id="readerSourceBtn" target="_blank" class="btn-secondary"
+                                style="margin-bottom: 12px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%;">
+                                <span class="material-symbols-outlined">public</span> Fuente Original
+                            </a>
+                            <button class="btn-secondary" onclick="alert('Enlace copiado al portapapeles')"
+                                style="width: 100%; display: flex; justify-content: center; align-items: center; gap: 8px;">
+                                <span class="material-symbols-outlined">share</span> Compartir Artículo
+                            </button>
+                        </div>
+                    </div>
+                </details>
+            </aside>
+
+            <!-- Main Article Content -->
+            <article class="reader-main">
+                <div id="readerContent" class="article-full-text"></div>
+            </article>
+        </div>
+
+        <!-- Botón para abrir modal de análisis -->
+        <button id="openModalFromReaderBtn" class="btn-primary floating-analytics-btn">
+            <span class="material-symbols-outlined">analytics</span> Ver Análisis Crítico y Retos
+        </button>
+    </main>
+
+    <footer class="site-footer" style="margin-top: 48px;">
+        <div class="container footer-content">
+            <div class="footer-text">
+                © 2026 Diana Marín Isaza. Salud Digital. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal for Article Analysis -->
+    <div class="modal-overlay" id="articleModal" style="display: none;">
+        <div class="modal-container">
+            <div class="modal-header">
+                <div class="modal-title-area">
+                    <span class="article-tag" id="modalTag">Categoría</span>
+                    <h2 id="modalTitle">Título del Artículo</h2>
+                </div>
+                <button class="btn-close" id="closeModalBtn" aria-label="Cerrar modal">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <aside class="modal-sidebar">
+                    <nav class="tab-nav" id="modalTabs">
+                        <button class="tab-btn active" data-tab="resumen">
+                            <span class="material-symbols-outlined">subject</span> Resumen
+                        </button>
+                        <button class="tab-btn" data-tab="analisis">
+                            <span class="material-symbols-outlined">analytics</span> Análisis Crítico
+                        </button>
+                        <button class="tab-btn" data-tab="reto">
+                            <span class="material-symbols-outlined">extension</span> Reto Interactivo
+                        </button>
+                        <button class="tab-btn" data-tab="comentarios">
+                            <span class="material-symbols-outlined">forum</span> Mi Reseña
+                        </button>
+                    </nav>
+                </aside>
+
+                <main class="modal-content-area">
+                    <div class="tab-pane active" id="pane-resumen">
+                        <div class="bento-grid">
+                            <div class="bento-card bento-full">
+                                <h4><span class="material-symbols-outlined">auto_stories</span> Resumen Ejecutivo</h4>
+                                <div id="content-resumen"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="pane-analisis">
+                        <div class="bento-grid">
+                            <div class="bento-card bento-full">
+                                <h4><span class="material-symbols-outlined">insights</span> Puntos Clave</h4>
+                                <div id="content-analisis"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="pane-reto">
+                        <div class="bento-card bento-full">
+                            <h4><span class="material-symbols-outlined">psychology</span> Evalúa tu comprensión</h4>
+                            <p style="color: var(--on-surface-variant); margin-bottom: var(--space-md);">Completa este
+                                ejercicio práctico para demostrar tu dominio sobre el tema.</p>
+                            <div id="content-reto"></div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="pane-comentarios">
+                        <div class="bento-card bento-full">
+                            <h4><span class="material-symbols-outlined">edit_note</span> Tu Perspectiva</h4>
+                            <p>Escribe una reseña crítica sobre este artículo. Tus notas se guardarán localmente.</p>
+                            <textarea id="reviewTextarea" class="form-input" rows="5"
+                                placeholder="Escribe tu análisis aquí..."></textarea>
+                            <div style="margin-top: var(--space-md); text-align: right;">
+                                <button id="saveReviewBtn" class="btn-primary">Guardar Reseña</button>
+                            </div>
+                            <div id="reviewFeedback" class="feedback-area success" style="display: none;">
+                                Reseña guardada exitosamente.
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+        <!-- Modal for Article Analysis -->
+        <div class="modal-overlay" id="articleModal">
+            <div class="modal-container">
+                <div class="modal-header">
+                    <div class="modal-title-area">
+                        <span class="article-tag" id="modalTag">Categoría</span>
+                        <h2 id="modalTitle">Título del Artículo</h2>
+                    </div>
+                    <button class="btn-close" id="closeModalBtn" aria-label="Cerrar modal">
+                        <span class="material-symbols-outlined">close</span>
+                    </button>
+                </div>
+                
+                <div class="modal-body">
+                    <!-- Sidebar Navigation -->
+                    <aside class="modal-sidebar">
+                        <nav class="tab-nav" id="modalTabs">
+                            <button class="tab-btn active" data-tab="resumen">
+                                <span class="material-symbols-outlined">subject</span> Resumen
+                            </button>
+                            <button class="tab-btn" data-tab="analisis">
+                                <span class="material-symbols-outlined">analytics</span> Análisis Crítico
+                            </button>
+                            <button class="tab-btn" data-tab="reto">
+                                <span class="material-symbols-outlined">extension</span> Reto Interactivo
+                            </button>
+                            <button class="tab-btn" data-tab="comentarios">
+                                <span class="material-symbols-outlined">forum</span> Mi Reseña
+                            </button>
+                        </nav>
+                    </aside>
+                    
+                    <!-- Content Area -->
+                    <main class="modal-content-area">
+                        <!-- Tab: Resumen -->
+                        <div class="tab-pane active" id="pane-resumen">
+                            <div class="bento-grid">
+                                <div class="bento-card bento-full">
+                                    <h4><span class="material-symbols-outlined">auto_stories</span> Resumen Ejecutivo</h4>
+                                    <div id="content-resumen"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Tab: Análisis -->
+                        <div class="tab-pane" id="pane-analisis">
+                            <div class="bento-grid">
+                                <div class="bento-card bento-full">
+                                    <h4><span class="material-symbols-outlined">insights</span> Puntos Clave</h4>
+                                    <div id="content-analisis"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Tab: Reto -->
+                        <div class="tab-pane" id="pane-reto">
+                            <div class="bento-card bento-full">
+                                <h4><span class="material-symbols-outlined">psychology</span> Evalúa tu comprensión</h4>
+                                <p style="color: var(--on-surface-variant); margin-bottom: var(--space-md);">Completa este ejercicio práctico para demostrar tu dominio sobre el tema y aumentar tu porcentaje de maestría.</p>
+                                <div id="content-reto"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Tab: Comentarios/Reseña -->
+                        <div class="tab-pane" id="pane-comentarios">
+                            <div class="bento-card bento-full">
+                                <h4><span class="material-symbols-outlined">edit_note</span> Tu Perspectiva</h4>
+                                <p>Escribe una reseña crítica sobre este artículo. Tus notas se guardarán localmente.</p>
+                                <textarea id="reviewTextarea" class="form-input" rows="5" placeholder="Escribe tu análisis aquí..."></textarea>
+                                <div style="margin-top: var(--space-md); text-align: right;">
+                                    <button id="saveReviewBtn" class="btn-primary">Guardar Reseña</button>
+                                </div>
+                                <div id="reviewFeedback" class="feedback-area success" style="display: none;">
+                                    Reseña guardada exitosamente.
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Script to load data and populate -->
+    <script src="app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const artId = urlParams.get('id');
+            const article = articles.find(a => a.id === artId);
+
+            if (article) {
+                // Populate Reader
+                const hero = document.getElementById('readerHero');
+                if (hero && article.headerImage) {
+                    hero.style.backgroundImage = 'url(' + article.headerImage + ')';
+                }
+                document.getElementById('readerTag').textContent = article.tag;
+                document.getElementById('readerTitle').textContent = article.title;
+                document.getElementById('readerDate').textContent = article.date;
+                document.getElementById('readerExcerpt').textContent = article.excerpt;
+                document.getElementById('readerDoi').textContent = article.doi || 'N/A';
+
+                const pdfBtn = document.getElementById('readerPdfBtn');
+                if (pdfBtn && article.pdfPath) {
+                    pdfBtn.href = article.pdfPath;
+                }
+
+                const sourceBtn = document.getElementById('readerSourceBtn');
+                if (sourceBtn && article.sourceUrl) {
+                    sourceBtn.href = article.sourceUrl;
+                } else if (sourceBtn) {
+                    sourceBtn.style.display = 'none';
+                }
+
+                const tagsContainer = document.getElementById('readerTagsContainer');
+                if (tagsContainer && article.tags) {
+                    article.tags.forEach(t => {
+                        const span = document.createElement('span');
+                        span.className = 'detail-tag';
+                        span.textContent = t;
+                        tagsContainer.appendChild(span);
+                    });
+                }
+
+                document.getElementById('readerContent').innerHTML = article.content.fullText;
+
+                const openModalBtn = document.getElementById('openModalFromReaderBtn');
+                if (openModalBtn) {
+                    openModalBtn.onclick = () => {
+                        document.getElementById('articleModal').classList.add('active'); // active makes it display flex in app.js if we use standard openModal logic
+                        openModal(article);
+                    };
+                }
+
+                // Set page title
+                document.title = "Salud Digital - " + article.title;
+            } else {
+                document.getElementById('readerTitle').textContent = "Artículo no encontrado";
+            }
+        });
+    </script>
+</body>
+
+</html>
