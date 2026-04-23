@@ -29,35 +29,35 @@
 
     <main class="w-full pb-xl">
         <!-- Hero Header -->
-        <header class="reader-hero" id="readerHero" style="background-color: var(--primary);">
-            <div class="hero-overlay"></div>
-            <div class="hero-content container">
-                <button id="backToHomeBtn" class="btn-secondary" onclick="window.close()"
-                    style="margin-bottom: var(--space-md); display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.2); backdrop-filter: blur(8px); border-color: rgba(255,255,255,0.3); color: white;">
-                    <span class="material-symbols-outlined">close</span> Cerrar Pestaña
-                </button>
-                <div class="hero-meta-row">
+        <header class="reader-hero" id="readerHero" style="background: url('assets/hero_bg.png') center/cover no-repeat; min-height: 50vh; position: relative;">
+            <div class="hero-overlay" style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10, 25, 47, 0.8) 0%, rgba(10, 25, 47, 0.4) 100%); backdrop-filter: blur(4px);"></div>
+            <div class="hero-content container" style="position: relative; z-index: 10; padding-top: 120px; padding-bottom: 60px;">
+                <a href="index.html" class="btn-secondary" id="backToHomeBtn"
+                    style="margin-bottom: var(--space-md); display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.1); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 12px 24px; border-radius: 99px; font-weight: 600; text-decoration: none; transition: all 0.3s ease;">
+                    <span class="material-symbols-outlined" style="font-size: 20px;">arrow_back</span> Volver al Portal
+                </a>
+                <div class="hero-meta-row" style="margin-top: 24px;">
                     <div class="hero-meta-item">
-                        <div class="hero-avatar">
-                            <span class="material-symbols-outlined">person</span>
+                        <div class="hero-avatar" style="border: 2px solid var(--secondary);">
+                            <span class="material-symbols-outlined" style="color: var(--secondary);">person</span>
                         </div>
                         <div>
-                            <p class="hero-meta-label">D. Marín Isaza</p>
-                            <p class="hero-meta-value">Estudiante</p>
+                            <p class="hero-meta-label" style="color: white; font-weight: 700;">D. Marín Isaza</p>
+                            <p class="hero-meta-value" style="color: rgba(255,255,255,0.7);">Estudiante Investigadora</p>
                         </div>
                     </div>
-                    <div class="hero-meta-divider"></div>
+                    <div class="hero-meta-divider" style="background: rgba(255,255,255,0.2);"></div>
                     <div class="hero-meta-item">
                         <div>
-                            <p class="hero-meta-label">Fecha de Publicación</p>
-                            <p class="hero-meta-value" id="readerDate"></p>
+                            <p class="hero-meta-label" style="color: white; font-weight: 700;">Publicación</p>
+                            <p class="hero-meta-value" id="readerDate" style="color: rgba(255,255,255,0.7);"></p>
                         </div>
                     </div>
                 </div>
-                <div class="hero-tags">
-                    <span class="hero-tag" id="readerTag"></span>
+                <div class="hero-tags" style="margin-top: 20px;">
+                    <span class="hero-tag" id="readerTag" style="background: var(--secondary); border: none; font-weight: 700;"></span>
                 </div>
-                <h1 class="hero-title" id="readerTitle">Cargando artículo...</h1>
+                <h1 class="hero-title" id="readerTitle" style="font-size: 3.5rem; color: white; margin-top: 16px; line-height: 1.2;">Cargando artículo...</h1>
             </div>
         </header>
 
@@ -119,12 +119,60 @@
             <!-- Main Article Content -->
             <article class="reader-main">
                 <div id="readerContent" class="article-full-text"></div>
+                
+                <!-- Direct Challenge Section -->
+                <div id="directChallengeContainer" style="margin-top: 64px; border-top: 2px solid var(--surface-container-high); padding-top: 48px;">
+                    <div class="bento-card" style="border: 1px solid var(--secondary-container); background: var(--surface-container-low);">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 24px;">
+                            <div style="width: 56px; height: 56px; background: var(--secondary-container); border-radius: 16px; display: flex; align-items: center; justify-content: center;">
+                                <span class="material-symbols-outlined" style="color: var(--secondary); font-size: 32px;">psychology</span>
+                            </div>
+                            <div>
+                                <h3 style="margin: 0; font-size: 1.75rem;">Reto de Aprendizaje</h3>
+                                <p style="margin: 0; font-size: 1rem; color: var(--on-surface-variant);">Pon a prueba tu comprensión de este análisis clínico.</p>
+                            </div>
+                        </div>
+                        <div id="content-reto-directo"></div>
+                    </div>
+                </div>
+
+                <!-- Review Section -->
+                <div id="directReviewContainer" style="margin-top: 32px; margin-bottom: 64px;">
+                    <div class="bento-card" style="border: 1px solid var(--primary-container);">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                            <div style="width: 56px; height: 56px; background: var(--primary-container); border-radius: 16px; display: flex; align-items: center; justify-content: center;">
+                                <span class="material-symbols-outlined" style="color: var(--primary); font-size: 32px;">edit_note</span>
+                            </div>
+                            <div>
+                                <h3 style="margin: 0; font-size: 1.75rem;">Tu Reseña</h3>
+                                <p style="margin: 0; font-size: 1rem; color: var(--on-surface-variant);">Comparte tu perspectiva académica con tus compañeros.</p>
+                            </div>
+                        </div>
+                        <div style="margin-bottom: 16px;">
+                            <input type="text" id="reviewerNameDirect" class="form-input" placeholder="Tu Nombre o Alias (ej. Diana M.)" 
+                                style="width: 100%; padding: 12px 16px; border-radius: 12px; border: 1px solid var(--outline-variant); font-family: var(--font-body); font-size: 1rem; background: var(--surface-container-lowest);">
+                        </div>
+                        <textarea id="reviewTextareaDirect" class="form-input" rows="5"
+                            style="width: 100%; padding: 16px; border-radius: 12px; border: 1px solid var(--outline-variant); font-family: var(--font-body); font-size: 1rem; resize: vertical; background: var(--surface-container-lowest);"
+                            placeholder="Escribe aquí tu análisis académico..."></textarea>
+                        <div style="margin-top: var(--space-md); text-align: right;">
+                            <button id="saveReviewBtnDirect" class="btn-primary" style="padding: 12px 32px; border-radius: 99px;">Guardar Reseña</button>
+                        </div>
+                        <div id="reviewFeedbackDirect" class="feedback-area success" style="display: none; margin-top: 16px;">
+                             Reseña guardada exitosamente.
+                        </div>
+                    </div>
+                </div>
             </article>
         </div>
 
-        <!-- Botón para abrir modal de análisis -->
-        <button id="openModalFromReaderBtn" class="btn-primary floating-analytics-btn">
-            <span class="material-symbols-outlined">analytics</span> Ver Análisis Crítico y Retos
+        <!-- Botón para abrir modal de análisis (Mejorado) -->
+        <button id="openModalFromReaderBtn" class="btn-primary floating-analytics-btn premium-btn" style="background: var(--primary); border: 2px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px);">
+            <div class="btn-icon-wrapper">
+                <span class="material-symbols-outlined">analytics</span>
+            </div>
+            <span class="btn-text">Análisis Detallado y Bibliografía</span>
+            <div class="btn-shine"></div>
         </button>
     </main>
 
@@ -137,162 +185,144 @@
     </footer>
 
     <!-- Modal for Article Analysis -->
-    <div class="modal-overlay" id="articleModal" style="display: none;">
+    <div class="modal-overlay" id="articleModal">
         <div class="modal-container">
-            <div class="modal-header">
+            <div class="modal-header" style="background: var(--surface-container-low); padding: 24px 32px;">
                 <div class="modal-title-area">
-                    <span class="article-tag" id="modalTag">Categoría</span>
-                    <h2 id="modalTitle">Título del Artículo</h2>
+                    <span class="hero-tag" id="modalTag" style="background: var(--primary); color: white; margin-bottom: 8px; display: inline-block;">Categoría</span>
+                    <h2 id="modalTitle" style="font-family: var(--font-h1); font-size: 1.75rem; color: var(--on-surface);">Título del Artículo</h2>
                 </div>
-                <button class="btn-close" id="closeModalBtn" aria-label="Cerrar modal">
+                <button class="btn-close" id="closeModalBtn" aria-label="Cerrar modal" style="background: var(--surface-container-high); width: 40px; height: 40px;">
                     <span class="material-symbols-outlined">close</span>
                 </button>
             </div>
 
             <div class="modal-body">
-                <aside class="modal-sidebar">
+                <aside class="modal-sidebar" style="background: var(--surface-container-lowest); border-right: 1px solid var(--surface-container-high); padding: 24px;">
+                    <p style="font-family: var(--font-label-sm); font-size: 12px; color: var(--outline); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px;">Navegación del Análisis</p>
                     <nav class="tab-nav" id="modalTabs">
                         <button class="tab-btn active" data-tab="resumen">
-                            <span class="material-symbols-outlined">subject</span> Resumen
+                            <span class="material-symbols-outlined">menu_book</span> Resumen Crítico
                         </button>
                         <button class="tab-btn" data-tab="analisis">
-                            <span class="material-symbols-outlined">analytics</span> Análisis Crítico
+                            <span class="material-symbols-outlined">analytics</span> Análisis Técnico
                         </button>
                         <button class="tab-btn" data-tab="reto">
-                            <span class="material-symbols-outlined">extension</span> Reto Interactivo
+                            <span class="material-symbols-outlined">extension</span> Reto Académico
                         </button>
                         <button class="tab-btn" data-tab="comentarios">
-                            <span class="material-symbols-outlined">forum</span> Mi Reseña
+                            <span class="material-symbols-outlined">history_edu</span> Mi Reflexión
                         </button>
                     </nav>
+
+                    <div style="margin-top: auto; padding-top: 24px; border-top: 1px solid var(--surface-container-high);">
+                        <div style="display: flex; align-items: center; gap: 12px; color: var(--on-surface-variant);">
+                            <span class="material-symbols-outlined" style="font-size: 20px;">verified_user</span>
+                            <span style="font-size: 0.85rem; font-weight: 500;">Espacio Asegurado</span>
+                        </div>
+                    </div>
                 </aside>
 
-                <main class="modal-content-area">
+                <main class="modal-content-area" style="background: white; padding: 40px;">
                     <div class="tab-pane active" id="pane-resumen">
-                        <div class="bento-grid">
-                            <div class="bento-card bento-full">
-                                <h4><span class="material-symbols-outlined">auto_stories</span> Resumen Ejecutivo</h4>
-                                <div id="content-resumen"></div>
+                        <div style="max-width: 800px;">
+                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 24px; color: var(--primary);">
+                                <span class="material-symbols-outlined" style="font-size: 32px;">format_quote</span>
+                                <h3 style="margin: 0; font-size: 1.5rem; font-family: var(--font-h1);">Resumen Ejecutivo</h3>
                             </div>
+                            <div id="content-resumen" class="article-full-text" style="font-size: 1.1rem; line-height: 1.8;"></div>
                         </div>
                     </div>
 
                     <div class="tab-pane" id="pane-analisis">
-                        <div class="bento-grid">
-                            <div class="bento-card bento-full">
-                                <h4><span class="material-symbols-outlined">insights</span> Puntos Clave</h4>
-                                <div id="content-analisis"></div>
+                        <div style="max-width: 800px;">
+                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 24px; color: var(--primary);">
+                                <span class="material-symbols-outlined" style="font-size: 32px;">biotech</span>
+                                <h3 style="margin: 0; font-size: 1.5rem; font-family: var(--font-h1);">Análisis de Rigor Técnico</h3>
                             </div>
+                            <div id="content-analisis" class="article-full-text" style="font-size: 1.1rem; line-height: 1.8;"></div>
                         </div>
                     </div>
 
                     <div class="tab-pane" id="pane-reto">
-                        <div class="bento-card bento-full">
-                            <h4><span class="material-symbols-outlined">psychology</span> Evalúa tu comprensión</h4>
-                            <p style="color: var(--on-surface-variant); margin-bottom: var(--space-md);">Completa este
-                                ejercicio práctico para demostrar tu dominio sobre el tema.</p>
+                        <div style="max-width: 800px;">
+                             <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 32px;">
+                                <div style="width: 56px; height: 56px; background: var(--secondary-container); border-radius: 16px; display: flex; align-items: center; justify-content: center;">
+                                    <span class="material-symbols-outlined" style="color: var(--secondary); font-size: 32px;">psychology</span>
+                                </div>
+                                <div>
+                                    <h3 style="margin: 0; font-size: 1.5rem; font-family: var(--font-h1);">Reto de Aprendizaje</h3>
+                                    <p style="margin: 0; color: var(--on-surface-variant);">Evalúa tu comprensión de este estudio científico.</p>
+                                </div>
+                            </div>
                             <div id="content-reto"></div>
                         </div>
                     </div>
 
                     <div class="tab-pane" id="pane-comentarios">
-                        <div class="bento-card bento-full">
-                            <h4><span class="material-symbols-outlined">edit_note</span> Tu Perspectiva</h4>
-                            <p>Escribe una reseña crítica sobre este artículo. Tus notas se guardarán localmente.</p>
-                            <textarea id="reviewTextarea" class="form-input" rows="5"
-                                placeholder="Escribe tu análisis aquí..."></textarea>
-                            <div style="margin-top: var(--space-md); text-align: right;">
-                                <button id="saveReviewBtn" class="btn-primary">Guardar Reseña</button>
+                        <div style="max-width: 800px;">
+                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 24px;">
+                                <div style="width: 56px; height: 56px; background: var(--primary-container); border-radius: 16px; display: flex; align-items: center; justify-content: center;">
+                                    <span class="material-symbols-outlined" style="color: var(--primary); font-size: 32px;">edit_note</span>
+                                </div>
+                                <div>
+                                    <h3 style="margin: 0; font-size: 1.5rem; font-family: var(--font-h1);">Tu Reseña Crítica</h3>
+                                    <p style="margin: 0; color: var(--on-surface-variant);">Aporta tu perspectiva académica al blog.</p>
+                                </div>
                             </div>
-                            <div id="reviewFeedback" class="feedback-area success" style="display: none;">
-                                Reseña guardada exitosamente.
+                            <div style="margin-bottom: 16px;">
+                                <input type="text" id="reviewerName" class="form-input" placeholder="Tu Nombre Académico" 
+                                    style="width: 100%; padding: 12px 16px; border-radius: 12px; border: 1px solid var(--outline-variant); font-family: var(--font-body); font-size: 1rem; background: var(--surface-container-lowest);">
+                            </div>
+                        <div class="bento-grid">
+                            <div class="bento-card bento-full" style="padding: 32px; border: 1px solid var(--outline-variant);">
+                                <h4 style="margin-bottom: 24px; display: flex; align-items: center; gap: 12px;">
+                                    <span class="material-symbols-outlined">rate_review</span> Dejar una Reseña
+                                </h4>
+                                
+                                <div style="display: flex; flex-direction: column; gap: 20px;">
+                                    <div class="form-group">
+                                        <label for="reviewerName" style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--primary); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px;">Tu Nombre o Alias</label>
+                                        <input type="text" id="reviewerName" class="form-input" placeholder="Ej. Dr. García o Tu nombre..." style="width: 100%; padding: 12px 16px; border-radius: 12px; border: 2px solid var(--surface-container-high); background: var(--surface-container-lowest); font-family: var(--font-body); outline: none; transition: border-color 0.3s ease;">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="reviewTextarea" style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--primary); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px;">Comentarios Académicos</label>
+                                        <textarea id="reviewTextarea" class="form-input" rows="4" placeholder="¿Qué te pareció el análisis? ¿Tienes alguna observación técnica?..." style="width: 100%; padding: 12px 16px; border-radius: 12px; border: 2px solid var(--surface-container-high); background: var(--surface-container-lowest); font-family: var(--font-body); outline: none; transition: border-color 0.3s ease; resize: none;"></textarea>
+                                    </div>
+                                    
+                                    <div style="text-align: right;">
+                                        <button class="btn-primary" id="saveReviewBtn" style="padding: 14px 28px; border-radius: 12px; display: inline-flex; align-items: center; gap: 8px;">
+                                            <span class="material-symbols-outlined">send</span> Enviar Reseña
+                                        </button>
+                                    </div>
+                                    <div id="reviewFeedback" class="feedback-area" style="display:none; border-radius: 12px; background: #e6f4ea; color: #1e7e34; border: 1px solid #c3e6cb;">
+                                        ¡Muchas gracias! Tu reseña se ha guardado localmente en este navegador.
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </main>
             </div>
         </div>
-        <!-- Modal for Article Analysis -->
-        <div class="modal-overlay" id="articleModal">
-            <div class="modal-container">
-                <div class="modal-header">
-                    <div class="modal-title-area">
-                        <span class="article-tag" id="modalTag">Categoría</span>
-                        <h2 id="modalTitle">Título del Artículo</h2>
-                    </div>
-                    <button class="btn-close" id="closeModalBtn" aria-label="Cerrar modal">
-                        <span class="material-symbols-outlined">close</span>
-                    </button>
-                </div>
-                
-                <div class="modal-body">
-                    <!-- Sidebar Navigation -->
-                    <aside class="modal-sidebar">
-                        <nav class="tab-nav" id="modalTabs">
-                            <button class="tab-btn active" data-tab="resumen">
-                                <span class="material-symbols-outlined">subject</span> Resumen
-                            </button>
-                            <button class="tab-btn" data-tab="analisis">
-                                <span class="material-symbols-outlined">analytics</span> Análisis Crítico
-                            </button>
-                            <button class="tab-btn" data-tab="reto">
-                                <span class="material-symbols-outlined">extension</span> Reto Interactivo
-                            </button>
-                            <button class="tab-btn" data-tab="comentarios">
-                                <span class="material-symbols-outlined">forum</span> Mi Reseña
-                            </button>
-                        </nav>
-                    </aside>
-                    
-                    <!-- Content Area -->
-                    <main class="modal-content-area">
-                        <!-- Tab: Resumen -->
-                        <div class="tab-pane active" id="pane-resumen">
-                            <div class="bento-grid">
-                                <div class="bento-card bento-full">
-                                    <h4><span class="material-symbols-outlined">auto_stories</span> Resumen Ejecutivo</h4>
-                                    <div id="content-resumen"></div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Tab: Análisis -->
-                        <div class="tab-pane" id="pane-analisis">
-                            <div class="bento-grid">
-                                <div class="bento-card bento-full">
-                                    <h4><span class="material-symbols-outlined">insights</span> Puntos Clave</h4>
-                                    <div id="content-analisis"></div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Tab: Reto -->
-                        <div class="tab-pane" id="pane-reto">
-                            <div class="bento-card bento-full">
-                                <h4><span class="material-symbols-outlined">psychology</span> Evalúa tu comprensión</h4>
-                                <p style="color: var(--on-surface-variant); margin-bottom: var(--space-md);">Completa este ejercicio práctico para demostrar tu dominio sobre el tema y aumentar tu porcentaje de maestría.</p>
-                                <div id="content-reto"></div>
-                            </div>
-                        </div>
-                        
-                        <!-- Tab: Comentarios/Reseña -->
-                        <div class="tab-pane" id="pane-comentarios">
-                            <div class="bento-card bento-full">
-                                <h4><span class="material-symbols-outlined">edit_note</span> Tu Perspectiva</h4>
-                                <p>Escribe una reseña crítica sobre este artículo. Tus notas se guardarán localmente.</p>
-                                <textarea id="reviewTextarea" class="form-input" rows="5" placeholder="Escribe tu análisis aquí..."></textarea>
-                                <div style="margin-top: var(--space-md); text-align: right;">
-                                    <button id="saveReviewBtn" class="btn-primary">Guardar Reseña</button>
-                                </div>
-                                <div id="reviewFeedback" class="feedback-area success" style="display: none;">
-                                    Reseña guardada exitosamente.
-                                </div>
-                            </div>
-                        </div>
-                    </main>
-                </div>
+    </div>
+
+    <!-- Invitation to Challenge/Review at the end of article -->
+    <section class="container" style="margin-top: -32px; margin-bottom: 64px;">
+        <div class="bento-card" style="background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; padding: 40px; border-radius: 24px; text-align: center; box-shadow: var(--shadow-level-2);">
+            <div style="max-width: 700px; margin: 0 auto;">
+                <span class="material-symbols-outlined" style="font-size: 48px; margin-bottom: 16px; opacity: 0.9;">psychology</span>
+                <h2 style="color: white; margin-bottom: 16px; font-size: 2rem;">¿Listo para poner a prueba lo aprendido?</h2>
+                <p style="color: rgba(255,255,255,0.9); font-size: 1.1rem; margin-bottom: 32px;">
+                    Tus compañeros y tú pueden participar respondiendo al reto de aprendizaje de este artículo y dejando una reseña crítica para consolidar el conocimiento.
+                </p>
+                <button onclick="document.getElementById('openModalFromReaderBtn').click()" class="btn-primary" style="background: white; color: var(--primary); border: none; font-weight: 700; padding: 16px 32px; font-size: 1rem;">
+                    Responder Reto y Dejar Reseña
+                </button>
             </div>
         </div>
+    </section>
 
     </div>
 
@@ -305,6 +335,7 @@
             const article = articles.find(a => a.id === artId);
 
             if (article) {
+                currentArticleId = article.id; // Sincronizar con app.js
                 // Populate Reader
                 const hero = document.getElementById('readerHero');
                 if (hero && article.headerImage) {
@@ -340,10 +371,34 @@
 
                 document.getElementById('readerContent').innerHTML = article.content.fullText;
 
+                // --- Direct Content Rendering ---
+                renderChallenge(article, 'content-reto-directo');
+                
+                const existingReview = Storage.getReviews()[article.id] || '';
+                const reviewTextareaDirect = document.getElementById('reviewTextareaDirect');
+                if (reviewTextareaDirect) {
+                    reviewTextareaDirect.value = existingReview;
+                }
+
+                const saveReviewBtnDirect = document.getElementById('saveReviewBtnDirect');
+                if (saveReviewBtnDirect) {
+                    saveReviewBtnDirect.addEventListener('click', (e) => {
+                        const text = document.getElementById('reviewTextareaDirect').value;
+                        const author = document.getElementById('reviewerNameDirect').value || 'Compañero Anónimo';
+                        Storage.saveReview(article.id, text, author);
+                        
+                        const feedback = document.getElementById('reviewFeedbackDirect');
+                        if (feedback) {
+                            feedback.style.display = 'block';
+                            setTimeout(() => { feedback.style.display = 'none'; }, 3000);
+                        }
+                        createSparkles(e.clientX, e.clientY);
+                    });
+                }
+
                 const openModalBtn = document.getElementById('openModalFromReaderBtn');
                 if (openModalBtn) {
                     openModalBtn.onclick = () => {
-                        document.getElementById('articleModal').classList.add('active'); // active makes it display flex in app.js if we use standard openModal logic
                         openModal(article);
                     };
                 }
@@ -355,6 +410,73 @@
             }
         });
     </script>
+    
+    <style>
+        /* Premium Floating Button Styles */
+        .premium-btn {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            padding: 12px 28px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-radius: 99px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(26, 35, 126, 0.3);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 1000;
+        }
+
+        .premium-btn:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 12px 48px rgba(26, 35, 126, 0.4);
+            background: var(--secondary) !important;
+        }
+
+        .btn-icon-wrapper {
+            background: rgba(255, 255, 255, 0.2);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: -10px;
+        }
+
+        .btn-text {
+            font-family: var(--font-h1);
+            letter-spacing: 0.02em;
+        }
+
+        .btn-shine {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                120deg,
+                transparent,
+                rgba(255, 255, 255, 0.3),
+                transparent
+            );
+            transition: all 0.6s;
+        }
+
+        .premium-btn:hover .btn-shine {
+            left: 100%;
+        }
+
+        /* Adjustments for direct containers */
+        .options-grid {
+            margin-bottom: 24px;
+        }
+    </style>
 </body>
 
 </html>
