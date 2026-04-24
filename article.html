@@ -166,14 +166,14 @@
             </article>
         </div>
 
-        <!-- Botón para abrir modal de análisis (Mejorado) -->
-        <button id="openModalFromReaderBtn" class="btn-primary floating-analytics-btn premium-btn" style="background: var(--primary); border: 2px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px);">
+        <!-- Botón para ir a la fuente original -->
+        <a id="floatingOriginalUrlBtn" href="#" target="_blank" class="btn-primary floating-analytics-btn premium-btn" style="background: var(--primary); border: 2px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); text-decoration: none;">
             <div class="btn-icon-wrapper">
-                <span class="material-symbols-outlined">analytics</span>
+                <span class="material-symbols-outlined">public</span>
             </div>
-            <span class="btn-text">Análisis Detallado y Bibliografía</span>
+            <span class="btn-text">Ver Artículo Original</span>
             <div class="btn-shine"></div>
-        </button>
+        </a>
     </main>
 
     <footer class="site-footer" style="margin-top: 48px;">
@@ -270,10 +270,7 @@
                                     <p style="margin: 0; color: var(--on-surface-variant);">Aporta tu perspectiva académica al blog.</p>
                                 </div>
                             </div>
-                            <div style="margin-bottom: 16px;">
-                                <input type="text" id="reviewerName" class="form-input" placeholder="Tu Nombre Académico" 
-                                    style="width: 100%; padding: 12px 16px; border-radius: 12px; border: 1px solid var(--outline-variant); font-family: var(--font-body); font-size: 1rem; background: var(--surface-container-lowest);">
-                            </div>
+
                         <div class="bento-grid">
                             <div class="bento-card bento-full" style="padding: 32px; border: 1px solid var(--outline-variant);">
                                 <h4 style="margin-bottom: 24px; display: flex; align-items: center; gap: 12px;">
@@ -309,20 +306,7 @@
     </div>
 
     <!-- Invitation to Challenge/Review at the end of article -->
-    <section class="container" style="margin-top: -32px; margin-bottom: 64px;">
-        <div class="bento-card" style="background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; padding: 40px; border-radius: 24px; text-align: center; box-shadow: var(--shadow-level-2);">
-            <div style="max-width: 700px; margin: 0 auto;">
-                <span class="material-symbols-outlined" style="font-size: 48px; margin-bottom: 16px; opacity: 0.9;">psychology</span>
-                <h2 style="color: white; margin-bottom: 16px; font-size: 2rem;">¿Listo para poner a prueba lo aprendido?</h2>
-                <p style="color: rgba(255,255,255,0.9); font-size: 1.1rem; margin-bottom: 32px;">
-                    Tus compañeros y tú pueden participar respondiendo al reto de aprendizaje de este artículo y dejando una reseña crítica para consolidar el conocimiento.
-                </p>
-                <button onclick="document.getElementById('openModalFromReaderBtn').click()" class="btn-primary" style="background: white; color: var(--primary); border: none; font-weight: 700; padding: 16px 32px; font-size: 1rem;">
-                    Responder Reto y Dejar Reseña
-                </button>
-            </div>
-        </div>
-    </section>
+
 
     </div>
 
@@ -396,11 +380,11 @@
                     });
                 }
 
-                const openModalBtn = document.getElementById('openModalFromReaderBtn');
-                if (openModalBtn) {
-                    openModalBtn.onclick = () => {
-                        openModal(article);
-                    };
+                const floatingOriginalUrlBtn = document.getElementById('floatingOriginalUrlBtn');
+                if (floatingOriginalUrlBtn && article.pdfPath) {
+                    floatingOriginalUrlBtn.href = article.pdfPath;
+                } else if (floatingOriginalUrlBtn) {
+                    floatingOriginalUrlBtn.style.display = 'none';
                 }
 
                 // Set page title

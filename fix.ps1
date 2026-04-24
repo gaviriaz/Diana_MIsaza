@@ -1,0 +1,1 @@
+﻿ = 'C:\Users\AlbertG\IGGA.SAS\PERSONAL\DEV\SHEY\Diana_MIsaza\app.js';  = Get-Content  -Raw;  = .Replace('??', 'i').Replace('Articulo', 'Artículo').Replace('tecnologia', 'tecnología').Replace('adopcion', 'adopción').Replace('regulacion', 'regulación'); Set-Content   -Encoding UTF8

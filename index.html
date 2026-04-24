@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Salud Digital - Diana Marín Isaza</title>
-    <!-- We removed Tailwind to use our custom CSS system -->
+    <meta name="description" content="Blog académico interactivo sobre salud digital, interoperabilidad, blockchain e IA en el ecosistema de salud.">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@300,0..1&display=swap"
         rel="stylesheet" />
     <link rel="icon" href="data:," />
@@ -17,8 +17,8 @@
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <button id="closeSidebarBtn" style="background: none; border: none; cursor: pointer;">
-                <span class="material-symbols-outlined" style="font-size: 32px; color: var(--outline);">close</span>
+            <button id="closeSidebarBtn" class="btn-icon" aria-label="Cerrar menú">
+                <span class="material-symbols-outlined">close</span>
             </button>
         </div>
         <nav class="sidebar-nav">
@@ -40,139 +40,127 @@
                 <span class="material-symbols-outlined">person</span>
             </div>
             <div>
-                <p style="font-weight: 700; color: var(--primary); margin: 0;">Diana Marín</p>
-                <p style="font-size: 0.8rem; color: var(--outline); margin: 0;">Investigadora</p>
+                <p class="sidebar-user-name">Diana Marín</p>
+                <p class="sidebar-user-role">Investigadora</p>
             </div>
         </div>
     </aside>
 
     <!-- Top Navigation -->
-    <nav class="navbar" style="position: sticky; top: 0; z-index: 1000; background: rgba(255,255,255,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(0,0,0,0.05);">
-        <div class="container navbar-content" style="display: flex; justify-content: space-between; align-items: center; padding: 1rem 0;">
-            <div class="navbar-brand" style="font-family: var(--font-h1); font-weight: 800; font-size: 1.5rem; color: var(--primary); letter-spacing: -0.02em;">
-                Diana Marín <span style="font-weight: 300; opacity: 0.6; margin: 0 8px;">|</span> <span style="font-weight: 400; font-family: var(--font-h2); font-style: italic;">Salud Digital</span>
+    <nav class="navbar">
+        <div class="container navbar-content">
+            <div class="navbar-brand">
+                Diana Marín <span class="separator">|</span> <span class="subtitle">Salud Digital</span>
             </div>
-            
-            <div class="navbar-links hidden-mobile" style="display: flex; gap: 32px;">
-                <a href="#inicio" class="navbar-link active" style="text-decoration: none; font-weight: 600; color: var(--primary);">Inicio</a>
-                <a href="#articulos" class="navbar-link" style="text-decoration: none; font-weight: 500; color: var(--on-surface-variant);">Artículos</a>
-                <a href="#metodologia" class="navbar-link" style="text-decoration: none; font-weight: 500; color: var(--on-surface-variant);">Metodología</a>
+
+            <div class="navbar-links hidden-mobile">
+                <a href="#inicio" class="navbar-link active">Inicio</a>
+                <a href="#articulos" class="navbar-link">Artículos</a>
+                <a href="#metodologia" class="navbar-link">Metodología</a>
             </div>
 
             <div class="navbar-actions">
-                <button id="openSidebarBtn" style="background: var(--surface-container-high); border: none; width: 48px; height: 48px; border-radius: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;">
-                    <span class="material-symbols-outlined" style="font-size: 28px; color: var(--primary);">menu</span>
+                <button id="openSidebarBtn" aria-label="Abrir menú">
+                    <span class="material-symbols-outlined">menu</span>
                 </button>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <header class="hero" id="inicio" style="text-align: left; justify-content: flex-start; padding-top: 180px; position: relative; background: url('https://images.unsplash.com/photo-1576091160550-2173dad99a01?auto=format&fit=crop&q=80&w=1920') center/cover no-repeat; overflow: hidden; min-height: 85vh; display: flex; align-items: center;">
-        <div style="position: absolute; inset: 0; background: linear-gradient(75deg, rgba(10, 25, 47, 0.9) 0%, rgba(10, 25, 47, 0.2) 100%); z-index: 1;"></div>
-        
-        <div class="container" style="position: relative; z-index: 10; display: flex; flex-direction: column; align-items: flex-start;">
-            <div class="hero-content" style="text-align: left; max-width: 900px;">
-                <span class="hero-subtitle" style="font-size: 1rem; color: var(--secondary); letter-spacing: 0.3em; font-weight: 800; text-transform: uppercase; margin-bottom: 16px; display: block;">Diana Marín Isaza — Portafolio Académico</span>
-                <h1 class="hero-title" style="font-size: 5.5rem; margin-top: 0; color: white; line-height: 1.05; font-weight: 800;">
-                    Transformando la<br><span class="italic-accent" style="color: var(--secondary); font-family: var(--font-h2); font-style: italic; font-weight: 400;">Salud Digital</span>
+    <header class="hero" id="inicio">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <span class="hero-subtitle">Diana Marín Isaza — Portafolio Académico</span>
+                <h1 class="hero-title">
+                    Transformando la<br><span class="italic-accent">Salud Digital</span>
                 </h1>
-                <p class="hero-description" style="margin: 32px 0; font-size: 1.35rem; line-height: 1.7; color: rgba(255,255,255,0.85); max-width: 700px; font-weight: 400;">
-                    Bienvenido a mi blog académico interactivo. Explora cómo la <strong style="color: white;">interoperabilidad</strong>, el <strong style="color: white;">Blockchain</strong> y la <strong style="color: white;">IA</strong> están redefiniendo el futuro del ecosistema de salud.
+                <p class="hero-description">
+                    Bienvenido a mi blog académico interactivo. Explora cómo la <strong>interoperabilidad</strong>, el <strong>Blockchain</strong> y la <strong>IA</strong> están redefiniendo el futuro del ecosistema de salud.
                 </p>
-                <div style="display: flex; gap: 20px; margin-top: 48px;">
-                    <a href="#articulos" class="btn-primary" style="padding: 20px 40px; border-radius: 99px; font-size: 1.1rem; box-shadow: 0 15px 35px rgba(108, 99, 255, 0.3); font-weight: 700;">Explorar Artículos</a>
-                    <a href="#metodologia" class="btn-secondary" style="padding: 20px 40px; border-radius: 99px; font-size: 1.1rem; border: 1px solid rgba(255,255,255,0.4); color: white; background: rgba(255,255,255,0.05); backdrop-filter: blur(15px); font-weight: 600;">Mi Metodología</a>
+                <div class="hero-actions">
+                    <a href="#articulos" class="btn-primary">Explorar Artículos</a>
+                    <a href="#metodologia" class="btn-secondary">Mi Metodología</a>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Dashboard/Stats Section -->
-    <section class="container" style="margin-top: -100px; position: relative; z-index: 20;">
-        <div class="bento-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
-            <!-- Artículos Analizados -->
-            <div class="bento-card" style="display: flex; align-items: center; gap: 24px; padding: 40px; border-radius: var(--radius-xl); background: white; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 20px 40px rgba(0,0,0,0.04);">
-                <div style="width: 72px; height: 72px; background: var(--primary-container); border-radius: 24px; display: flex; align-items: center; justify-content: center;">
-                    <span class="material-symbols-outlined" style="font-size: 36px; color: var(--primary); font-variation-settings: 'FILL' 1;">article</span>
-                </div>
-                <div>
-                    <h3 style="font-size: 2.5rem; margin: 0; font-weight: 800; color: var(--primary);">4</h3>
-                    <p style="margin: 0; color: var(--on-surface-variant); font-weight: 600; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px;">Artículos Analizados</p>
+    <section class="container stats-section">
+        <div class="stats-strip">
+            <div class="stat-chip">
+                <span class="material-symbols-outlined filled stat-chip-icon primary">article</span>
+                <div class="stat-chip-info">
+                    <span class="stat-chip-number primary">4</span>
+                    <span class="stat-chip-label">Artículos</span>
                 </div>
             </div>
-
-            <!-- Maestría -->
-            <div class="bento-card" style="display: flex; align-items: center; gap: 24px; padding: 40px; border-radius: var(--radius-xl); background: white; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 20px 40px rgba(0,0,0,0.04);">
-                <div style="width: 72px; height: 72px; background: var(--secondary-container); border-radius: 24px; display: flex; align-items: center; justify-content: center;">
-                    <span class="material-symbols-outlined" style="font-size: 36px; color: var(--secondary); font-variation-settings: 'FILL' 1;">school</span>
-                </div>
-                <div>
-                    <h3 id="statsMastery" style="font-size: 2.5rem; margin: 0; font-weight: 800; color: var(--secondary);">0%</h3>
-                    <p style="margin: 0; color: var(--on-surface-variant); font-weight: 600; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px;">Maestría Completada</p>
+            <div class="stat-chip">
+                <span class="material-symbols-outlined filled stat-chip-icon secondary">school</span>
+                <div class="stat-chip-info">
+                    <span class="stat-chip-number secondary" id="statsMastery">0%</span>
+                    <span class="stat-chip-label">Maestría</span>
                 </div>
             </div>
-
-            <!-- Progreso Académico (Contrast Fix) -->
-            <div class="bento-card dark-theme" style="padding: 40px; border-radius: var(--radius-xl); display: flex; flex-direction: column; justify-content: center; background: var(--primary); color: white;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-                    <h4 style="margin: 0; font-family: var(--font-h1); font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; color: white;">Progreso Académico</h4>
-                    <span class="material-symbols-outlined" style="font-size: 28px; color: white;">trending_up</span>
+            <div class="stat-chip accent" style="flex-direction: column; align-items: stretch; gap: 8px; justify-content: center;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span class="stat-chip-label light" style="font-weight: 600; font-size: 0.95em; color: white;">Progreso Académico</span>
+                    <span class="material-symbols-outlined stat-chip-icon light" style="font-size: 1.2rem; padding: 4px; background: rgba(255,255,255,0.1);">trending_up</span>
                 </div>
-                <div class="progress-container" style="height: 10px; border-radius: 5px; background: rgba(255,255,255,0.2);">
-                    <div class="progress-bar" id="masteryProgressBar" style="width: 0%; border-radius: 5px; background: var(--secondary);"></div>
+                <div class="progress-container" style="height: 6px; background: rgba(255,255,255,0.2); margin: 0; border-radius: 4px;">
+                    <div class="progress-bar" id="masteryProgressBar" style="background: white; border-radius: 4px;"></div>
                 </div>
-                <p style="margin-top: 16px; font-size: 1rem; opacity: 0.9; font-weight: 400; color: white;">Sigue explorando para avanzar</p>
+                <span class="stat-chip-label light" style="font-size: 0.75em; opacity: 0.9; color: white;">Sigue explorando para avanzar</span>
             </div>
         </div>
     </section>
 
     <!-- Blog Feed Section -->
-    <main class="container" style="margin-top: var(--space-xl); margin-bottom: var(--space-xl);">
+    <main class="container main-content">
         <section id="articulos">
-            <div class="section-header" style="text-align: left; margin-bottom: 48px; border-bottom: 1px solid var(--surface-container-high); padding-bottom: 24px;">
-                <h2 style="font-size: 2.5rem; margin-bottom: 8px;">Análisis de Artículos</h2>
-                <p style="font-size: 1.1rem; max-width: 600px;">Selecciona un artículo para leer su resumen, dejar tu reseña y completar los retos de aprendizaje.</p>
+            <div class="section-header">
+                <h2>Análisis de Artículos</h2>
+                <p>Selecciona un artículo para leer su resumen, dejar tu reseña y completar los retos de aprendizaje.</p>
             </div>
-
-            <div class="blog-feed" id="articleList" style="display: flex; flex-direction: column; gap: 32px;">
-                <!-- Artículos inyectados por JS (con estilo de blog) -->
+            <div class="blog-feed" id="articleList">
+                <!-- Artículos inyectados por JS -->
             </div>
         </section>
 
-        <!-- Metodología Section (Unificada y Refinada) -->
-        <section id="metodologia" style="margin-top: var(--space-xl); margin-bottom: var(--space-xl); padding: 100px 0; border-top: 1px solid var(--surface-container-high);">
+        <!-- Metodología Section -->
+        <section id="metodologia">
             <div class="container">
-                <div style="text-align: left; max-width: 800px; margin-bottom: 64px;">
-                    <span class="hero-subtitle" style="margin-bottom: 8px; color: var(--secondary); font-weight: 800; text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.9rem;">Excelencia Académica</span>
-                    <h2 style="font-size: 3.5rem; margin: 16px 0; color: var(--primary);">Metodología de Análisis</h2>
-                    <p style="font-size: 1.25rem; color: var(--on-surface-variant); line-height: 1.6;">Cómo estructuro y evalúo la literatura científica para asegurar el máximo rigor académico en cada análisis de salud digital.</p>
+                <div class="section-header">
+                    <span class="hero-subtitle">Excelencia Académica</span>
+                    <h2>Metodología de Análisis</h2>
+                    <p class="section-subtitle">Cómo estructuro y evalúo la literatura científica para asegurar el máximo rigor académico en cada análisis de salud digital.</p>
                 </div>
-                
-                <div class="bento-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px;">
+
+                <div class="bento-grid">
                     <!-- Step 1 -->
-                    <div class="bento-card" style="padding: 48px; border-radius: 24px; background: white; border: 1px solid var(--surface-container-high); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 10px 30px rgba(0,0,0,0.02);">
-                        <div style="width: 64px; height: 64px; background: var(--primary-container); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin-bottom: 32px;">
-                            <span class="material-symbols-outlined" style="font-size: 32px; color: var(--primary);">search</span>
+                    <div class="methodology-step">
+                        <div class="step-icon-box step-icon-primary">
+                            <span class="material-symbols-outlined">search</span>
                         </div>
-                        <h4 style="font-size: 1.6rem; margin-bottom: 16px; color: var(--primary);">Revisión Sistemática</h4>
-                        <p style="line-height: 1.8; color: var(--on-surface-variant);">Búsqueda exhaustiva en bases de datos (PubMed, Scopus) utilizando directrices <strong style="color: var(--primary);">PRISMA</strong> para asegurar rigor y reproducibilidad.</p>
+                        <h4>Revisión Sistemática</h4>
+                        <p>Búsqueda exhaustiva en bases de datos (PubMed, Scopus) utilizando directrices <strong>PRISMA</strong> para asegurar rigor y reproducibilidad.</p>
                     </div>
                     <!-- Step 2 -->
-                    <div class="bento-card" style="padding: 48px; border-radius: 24px; background: white; border: 1px solid var(--surface-container-high); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 10px 30px rgba(0,0,0,0.02);">
-                        <div style="width: 64px; height: 64px; background: var(--secondary-container); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin-bottom: 32px;">
-                            <span class="material-symbols-outlined" style="font-size: 32px; color: var(--secondary);">analytics</span>
+                    <div class="methodology-step">
+                        <div class="step-icon-box step-icon-secondary">
+                            <span class="material-symbols-outlined">analytics</span>
                         </div>
-                        <h4 style="font-size: 1.6rem; margin-bottom: 16px; color: var(--primary);">Análisis Crítico</h4>
-                        <p style="line-height: 1.8; color: var(--on-surface-variant);">Evaluación de sesgos, relevancia clínica y viabilidad técnica de soluciones en entornos hospitalarios reales bajo presión asistencial.</p>
+                        <h4>Análisis Crítico</h4>
+                        <p>Evaluación de sesgos, relevancia clínica y viabilidad técnica de soluciones en entornos hospitalarios reales bajo presión asistencial.</p>
                     </div>
                     <!-- Step 3 -->
-                    <div class="bento-card" style="padding: 48px; border-radius: 24px; background: white; border: 1px solid var(--surface-container-high); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 10px 30px rgba(0,0,0,0.02);">
-                        <div style="width: 64px; height: 64px; background: var(--tertiary-container); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin-bottom: 32px;">
-                            <span class="material-symbols-outlined" style="font-size: 32px; color: var(--tertiary);">model_training</span>
+                    <div class="methodology-step">
+                        <div class="step-icon-box step-icon-tertiary">
+                            <span class="material-symbols-outlined">model_training</span>
                         </div>
-                        <h4 style="font-size: 1.6rem; margin-bottom: 16px; color: var(--primary);">Aplicación Práctica</h4>
-                        <p style="line-height: 1.8; color: var(--on-surface-variant);">Diseño de escenarios interactivos para conectar la teoría académica con la toma de decisiones clínicas y administrativas.</p>
+                        <h4>Aplicación Práctica</h4>
+                        <p>Diseño de escenarios interactivos para conectar la teoría académica con la toma de decisiones clínicas y administrativas.</p>
                     </div>
                 </div>
             </div>
@@ -180,33 +168,33 @@
     </main>
 
     <!-- Footer -->
-    <footer class="site-footer" style="padding: 80px 0; background: var(--surface-container-lowest); border-top: 1px solid var(--surface-container-high);">
-        <div class="container" style="display: flex; flex-direction: column; gap: 40px;">
-            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 40px;">
-                <div style="max-width: 400px;">
-                    <div class="navbar-brand" style="font-size: 1.75rem; margin-bottom: 16px;">Salud Digital</div>
-                    <p style="font-size: 0.95rem; color: var(--on-surface-variant);">Un espacio dedicado al análisis de la transformación digital en salud y su impacto en la práctica clínica.</p>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-main">
+                <div class="footer-brand-area">
+                    <div class="navbar-brand">Salud Digital</div>
+                    <p>Un espacio dedicado al análisis de la transformación digital en salud y su impacto en la práctica clínica.</p>
                 </div>
-                <div style="display: flex; gap: 80px;">
-                    <div style="display: flex; flex-direction: column; gap: 12px;">
-                        <span style="font-weight: 700; color: var(--primary); text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.1em;">Legal</span>
+                <div class="footer-nav">
+                    <div class="footer-col">
+                        <span class="footer-col-title">Legal</span>
                         <a href="#" class="footer-link">Privacidad</a>
                         <a href="#" class="footer-link">Términos</a>
                     </div>
-                    <div style="display: flex; flex-direction: column; gap: 12px;">
-                        <span style="font-weight: 700; color: var(--primary); text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.1em;">Contacto</span>
+                    <div class="footer-col">
+                        <span class="footer-col-title">Contacto</span>
                         <a href="#" class="footer-link">LinkedIn</a>
                         <a href="#" class="footer-link">Email</a>
                     </div>
                 </div>
             </div>
-            <div style="border-top: 1px solid var(--surface-container-high); padding-top: 32px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
-                <div class="footer-text" style="font-size: 0.9rem;">
+            <div class="footer-bottom">
+                <div class="footer-text">
                     © 2026 Diana Marín Isaza. Salud Digital. Todos los derechos reservados.
                 </div>
-                <div style="display: flex; gap: 24px;">
-                    <span class="material-symbols-outlined" style="color: var(--outline); font-size: 20px;">share</span>
-                    <span class="material-symbols-outlined" style="color: var(--outline); font-size: 20px;">rss_feed</span>
+                <div class="footer-social">
+                    <span class="material-symbols-outlined">share</span>
+                    <span class="material-symbols-outlined">rss_feed</span>
                 </div>
             </div>
         </div>
@@ -232,6 +220,9 @@
                         <button class="tab-btn active" data-tab="resumen">
                             <span class="material-symbols-outlined">subject</span> Resumen
                         </button>
+                        <button class="tab-btn" data-tab="lectura">
+                            <span class="material-symbols-outlined">menu_book</span> Lectura Completa
+                        </button>
                         <button class="tab-btn" data-tab="analisis">
                             <span class="material-symbols-outlined">analytics</span> Análisis Crítico
                         </button>
@@ -256,6 +247,16 @@
                         </div>
                     </div>
 
+                    <!-- Tab: Lectura Completa -->
+                    <div class="tab-pane" id="pane-lectura">
+                        <div class="bento-grid">
+                            <div class="bento-card bento-full">
+                                <h4><span class="material-symbols-outlined">article</span> Artículo Completo</h4>
+                                <div id="content-lectura" class="article-body"></div>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Tab: Análisis -->
                     <div class="tab-pane" id="pane-analisis">
                         <div class="bento-grid">
@@ -270,9 +271,7 @@
                     <div class="tab-pane" id="pane-reto">
                         <div class="bento-card bento-full">
                             <h4><span class="material-symbols-outlined">psychology</span> Evalúa tu comprensión</h4>
-                            <p style="color: var(--on-surface-variant); margin-bottom: var(--space-md);">Completa este
-                                ejercicio práctico para demostrar tu dominio sobre el tema y aumentar tu porcentaje de
-                                maestría.</p>
+                            <p class="tab-description">Completa este ejercicio práctico para demostrar tu dominio sobre el tema y aumentar tu porcentaje de maestría.</p>
                             <div id="content-reto"></div>
                         </div>
                     </div>
@@ -282,17 +281,20 @@
                         <div class="bento-grid">
                             <div class="bento-card bento-full">
                                 <h4><span class="material-symbols-outlined">edit_note</span> Mi Reseña Crítica</h4>
-                                <p style="color: var(--on-surface-variant); margin-bottom: 24px;">Tu aporte es fundamental para la comunidad académica.</p>
-                                
-                                <div style="margin-bottom: 20px;">
-                                    <label for="reviewerName" style="display: block; font-size: 0.85rem; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Tu Nombre Académico</label>
-                                    <input type="text" id="reviewerName" placeholder="Ej. Diana Marín" style="width: 100%; padding: 14px 20px; border-radius: 12px; border: 1px solid var(--surface-container-high); background: var(--surface-container-lowest); font-family: var(--font-body); font-size: 1rem;">
+                                <p>Tu aporte es fundamental para la comunidad académica.</p>
+
+                                <div class="form-group">
+                                    <label for="reviewerName">Tu Nombre Académico</label>
+                                    <input type="text" id="reviewerName" class="input-field" placeholder="Ej. Diana Marín">
                                 </div>
 
-                                <textarea id="reviewTextarea" rows="6" placeholder="Escribe aquí tu análisis..." style="width: 100%; padding: 20px; border-radius: 12px; border: 1px solid var(--surface-container-high); background: var(--surface-container-lowest); font-family: var(--font-body); font-size: 1rem; resize: vertical;"></textarea>
-                                
-                                <div style="margin-top: 24px; display: flex; justify-content: flex-end; align-items: center; gap: 20px;">
-                                    <span id="reviewFeedback" class="feedback-area success" style="display: none; margin: 0; padding: 10px 20px;">Reseña guardada</span>
+                                <div class="form-group">
+                                    <label for="reviewTextarea">Tu Análisis</label>
+                                    <textarea id="reviewTextarea" class="textarea-field" placeholder="Escribe aquí tu análisis..."></textarea>
+                                </div>
+
+                                <div class="form-footer">
+                                    <span id="reviewFeedback" class="review-feedback">✓ Reseña guardada</span>
                                     <button id="saveReviewBtn" class="btn-primary">Guardar Reseña</button>
                                 </div>
                             </div>
@@ -304,46 +306,38 @@
     </div>
 
     <!-- Profile Modal -->
-    <div class="modal-overlay" id="profileModal">
-        <div class="modal-container" style="max-width: 400px; height: auto;">
-            <div class="modal-header" style="padding: 12px 16px;">
+    <div class="modal-overlay profile-modal" id="profileModal">
+        <div class="modal-container">
+            <div class="modal-header">
                 <div class="modal-title-area">
-                    <h2 style="font-size: 1.25rem; color: var(--primary);">Perfil Académico</h2>
+                    <h2>Perfil Académico</h2>
                 </div>
                 <button class="btn-close" id="closeProfileBtn" aria-label="Cerrar modal">
-                    <span class="material-symbols-outlined" style="font-size: 20px;">close</span>
+                    <span class="material-symbols-outlined">close</span>
                 </button>
             </div>
-            <div class="modal-body" style="display: block; padding: var(--space-md);">
-                <div style="text-align: center; margin-bottom: var(--space-sm);">
-                    <img src="assets/profile.png" alt="Diana Marín Isaza"
-                        style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary-container); margin: 0 auto; display: block; box-shadow: var(--shadow-sm);">
-                    <h3 style="margin-top: 12px; font-family: var(--font-h1); color: var(--on-surface); font-size: 1.2rem;">Diana Marín Isaza</h3>
-                    <p style="color: var(--primary); font-weight: 600; font-size: 0.9rem; margin-bottom: 6px;">Estudiante</p>
-                    <p
-                        style="color: var(--on-surface-variant); font-size: 0.85rem; line-height: 1.4; margin-bottom: 12px;">
-                        Soy estudiante de Gerencia de Sistemas de Información en Salud. En este espacio comparto
-                        información, experiencias y reflexiones sobre cómo la telemedicina y las herramientas digitales
-                        pueden transformar la atención en salud, acercar los servicios médicos a las personas y
-                        contribuir a mejorar su calidad de vida. </p>
-                    <p
-                        style="color: var(--on-surface-variant); font-weight: 500; font-size: 0.85rem; background: var(--surface-container); padding: 6px 10px; border-radius: 8px; display: inline-block;">
-                        Progreso de Lectura General: <span id="profileMastery"
-                            style="color: var(--primary); font-weight: 700;">0%</span></p>
+            <div class="modal-body profile-body">
+                <div class="profile-info">
+                    <img src="assets/profile.png" alt="Diana Marín Isaza" class="profile-avatar">
+                    <h3 class="profile-name">Diana Marín Isaza</h3>
+                    <p class="profile-role">Investigadora en Salud Digital</p>
+                    <p class="profile-bio">
+                        Estudiante de Gerencia de Sistemas de Información en Salud. Dedicada al análisis de cómo la telemedicina y las herramientas digitales transforman la atención clínica y mejoran la calidad de vida.
+                    </p>
+                    <div class="profile-stats-badge">
+                        Progreso General: <span id="profileMastery">0%</span>
+                    </div>
                 </div>
 
-                <div class="bento-card" style="margin-top: var(--space-sm); padding: 12px;">
-                    <h4 style="margin-bottom: 8px; font-size: 0.95rem; display: flex; align-items: center; justify-content: center; gap: 4px;"><span class="material-symbols-outlined"
-                            style="font-size: 18px;">history_edu</span> Retos Completados</h4>
-                    <ul id="completedChallengesList"
-                        style="list-style: none; padding: 0; margin: 0; font-size: 0.8rem; color: var(--on-surface-variant);">
+                <div class="bento-card">
+                    <h4><span class="material-symbols-outlined">history_edu</span> Retos Completados</h4>
+                    <ul id="completedChallengesList" class="challenges-list">
                         <!-- Inyectado por JS -->
                     </ul>
                 </div>
 
-                <div style="margin-top: var(--space-md); text-align: center;">
-                    <button class="btn-secondary" id="resetProgressBtn"
-                        style="padding: 6px 12px; font-size: 0.85rem; color: var(--error); border-color: var(--error);">Reiniciar Progreso</button>
+                <div class="profile-actions">
+                    <button class="btn-danger" id="resetProgressBtn">Reiniciar Progreso</button>
                 </div>
             </div>
         </div>
