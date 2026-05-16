@@ -2236,17 +2236,14 @@ function openModal(article) {
     document.getElementById('content-lectura').innerHTML = article.content.fullText;
     document.getElementById('content-analisis').innerHTML = article.content.analisis;
 
-    const reviewTextarea = document.getElementById('reviewTextarea');
-    const reviewerNameInput = document.getElementById('reviewerName');
-    const reviews = Storage.getReviews();
-    const savedReview = reviews[article.id];
-
-    if (savedReview) {
-        if (reviewTextarea) reviewTextarea.value = savedReview.text;
-        if (reviewerNameInput) reviewerNameInput.value = savedReview.author;
-    } else {
-        if (reviewTextarea) reviewTextarea.value = '';
-        if (reviewerNameInput) reviewerNameInput.value = '';
+    if (typeof DISQUS !== 'undefined') {
+        DISQUS.reset({
+            reload: true,
+            config: function () {
+                this.page.identifier = article.id;
+                this.page.url = window.location.href.split('#')[0] + "?id=" + article.id;
+            }
+        });
     }
 
     renderChallenge(article);
@@ -2375,20 +2372,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('closeModalBtn')?.addEventListener('click', closeModal);
 
-    // Save Review Logic
-    document.getElementById('saveReviewBtn')?.addEventListener('click', () => {
-        const text = document.getElementById('reviewTextarea').value;
-        const author = document.getElementById('reviewerName').value || 'Diana Marin';
-
-        if (currentArticleId) {
-            Storage.saveReview(currentArticleId, text, author);
-            const feedback = document.getElementById('reviewFeedback');
-            if (feedback) {
-                feedback.classList.add('visible');
-                setTimeout(() => { feedback.classList.remove('visible'); }, 3000);
-            }
-        }
-    });
+    // (Old Save Review Logic removed in favor of Disqus)
 
     // Check for URL parameters
     const urlParams = new URLSearchParams(window.location.search);
